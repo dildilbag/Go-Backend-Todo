@@ -18,7 +18,7 @@ type todos struct {
 
 var todo = []todos{
 	{ID: 1, Name: "Dilbag", Done: true},
-	{ID: 2, Name: "Jeru", Done: true},
+	{ID: 2, Name: "Eric", Done: true},
 	{ID: 3, Name: "Deepa", Done: true},
 }
 
