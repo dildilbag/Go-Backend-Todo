@@ -6,14 +6,15 @@ import (
 
 	"strconv"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
 // todos represents data about a record Todos.
 type todos struct {
-	ID   int    `csv:"id"`
-	Name string `csv:"name"`
-	Done bool   `csv:"true"`
+	ID   int    `json:"id"`
+	Name string `json:"name"`
+	Done bool   `json:"true"`
 }
 
 var todo = []todos{
@@ -21,6 +22,8 @@ var todo = []todos{
 	{ID: 2, Name: "Eric", Done: true},
 	{ID: 3, Name: "Deepa", Done: true},
 }
+
+//*********************************************//
 
 // gettodos responds with the list of all list as JSON.
 func getTodos(c *gin.Context) {
@@ -85,6 +88,8 @@ func DeletetodosByID(c *gin.Context) {
 func main() {
 
 	router := gin.Default()
+	router.Use(cors.Default())
+
 	router.GET("/todos", getTodos)
 	router.POST("/todos", Posttodo)
 	router.PATCH("/todos/:id", PatchtodosByID)
